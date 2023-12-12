@@ -16,7 +16,7 @@ Check that you have installed perl
 
 ### Installation
 
-If you don't have perl you can install it [https://www.perl.org/get.html](here)
+If you don't have perl you can install it [here](https://www.perl.org/get.html)
 
 <!-- USAGE EXAMPLES -->
 ## Usage
