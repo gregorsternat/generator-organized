@@ -1,0 +1,113 @@
+#!/usr/bin/perl -w
+
+if ($ARGV[0] eq "-h") {
+        print "syntaxe: ./generation {number of add} {number of del} {disp(true/false)} {sort(true/false)} (if sort true){TYPE/NAME/ID} (if sort true){-r(true/false)\nexemple ./generation 15 0 true true TYPE/NAME true\n";
+        exit;
+}
+if ($#ARGV != 5) {
+    print "use -h\n";
+    exit;
+}
+if ($ARGV[2] ne "true" && $ARGV[2] ne "false") {
+    print "use -h\n";
+    exit;
+}
+if ($ARGV[3] ne "true" && $ARGV[3] ne "false") {
+    print "use -h\n";
+    exit;
+}
+my $filename = 'file1.txt';
+open(my $fh, '>', $filename) or die "Could not open file '$filename' $!";
+if (int($ARGV[0]) != 0) {
+    print $fh "add ";
+    for (my $i = 0; $i < int($ARGV[0]); $i++) {
+        my $rdm = int(rand(5));
+        if ($rdm == 0) {
+            print $fh "ACTUATOR b, ";
+        }
+        if ($rdm == 1) {
+            print $fh "DEVICE a, ";
+        }
+        if ($rdm == 2) {
+            print $fh "PROCESSOR z, ";
+        }
+        if ($rdm == 3) {
+            print $fh "SENSOR e, ";
+        }
+        if ($rdm == 4) {
+            print $fh "WIRE l, ";
+        }
+    }
+    print $fh "\n";
+    if ($ARGV[2] eq "true") {
+        print $fh "disp\n";
+    }
+}
+if (int($ARGV[1]) != 0) {
+    print $fh "del ";
+    for (my $i = 0; $i < int($ARGV[1]); $i++) {
+        print $fh "$i, ";
+    }
+    print $fh "\n";
+    if ($ARGV[2] eq "true") {
+        print $fh "disp\n";
+    }
+}
+if ($ARGV[3] eq "true") {
+    print $fh "sort ";
+    if ($ARGV[4] eq "NAME") {
+        print $fh "NAME ";
+    }
+    if ($ARGV[4] eq "TYPE") {
+        print $fh "TYPE ";
+    }
+    if ($ARGV[4] eq "ID") {
+        print $fh "ID ";
+    }
+    if ($ARGV[4] eq "ID/NAME") {
+        print $fh "ID NAME ";
+    }
+    if ($ARGV[4] eq "NAME/ID") {
+        print $fh "NAME ID ";
+    }
+    if ($ARGV[4] eq "ID/TYPE") {
+        print $fh "ID TYPE ";
+    }
+    if ($ARGV[4] eq "TYPE/ID") {
+        print $fh "TYPE ID ";
+    }
+    if ($ARGV[4] eq "TYPE/NAME") {
+        print $fh "TYPE NAME ";
+    }
+    if ($ARGV[4] eq "NAME/TYPE") {
+        print $fh "NAME TYPE ";
+    }
+    if ($ARGV[4] eq "NAME/TYPE/ID") {
+        print $fh "NAME TYPE ID ";
+    }
+    if ($ARGV[4] eq "NAME/ID/TYPE") {
+        print $fh "NAME ID TYPE ";
+    }
+    if ($ARGV[4] eq "ID/TYPE/NAME") {
+        print $fh "ID TYPE NAME ";
+    }
+    if ($ARGV[4] eq "ID/NAME/TYPE") {
+        print $fh "ID NAME TYPE ";
+    }
+    if ($ARGV[4] eq "TYPE/NAME/ID") {
+        print $fh "TYPE NAME ID ";
+    }
+    if ($ARGV[4] eq "TYPE/ID/NAME") {
+        print $fh "TYPE ID NAME ";
+    }
+    if ($ARGV[5] eq "true") {
+        print $fh "-r";
+    }
+    print $fh "\n";
+    if ($ARGV[2] eq "true") {
+        print $fh "disp\n";
+    }
+}
+print $fh "exit";
+close $fh;
+print "done\n";
