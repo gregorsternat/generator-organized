@@ -12,10 +12,7 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 Check that you have installed perl 
-* npm
-  ```sh
-  perl -v
-  ```
+  ```perl -v```
 
 ### Installation
 
